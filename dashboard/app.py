@@ -20,7 +20,17 @@ st.set_page_config(
 # LOAD TRAINED MODEL
 # =====================================================
 
-model = joblib.load("../models/customer_churn_model.pkl")
+from pathlib import Path
+import joblib
+
+# Get the project root directory
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load model
+model = joblib.load(BASE_DIR / "models" / "customer_churn_model.pkl")
+
+# Load feature names (if you use them)
+feature_names = joblib.load(BASE_DIR / "models" / "feature_names.pkl")
 
 # =====================================================
 # CUSTOM CSS
